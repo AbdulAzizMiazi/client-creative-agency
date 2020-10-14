@@ -1,0 +1,20 @@
+.header-div{
+    background: #FBD062;
+    padding-bottom: 80px;
+    clip-path: polygon(0 0, 100% 0, 100% 87%, 0 100%);
+}
+.headerText{
+    font-weight: 800;
+    font-size: 45px;
+    line-height: 3.5rem;
+    color: rgba(17,20,48,1);
+}
+.brands{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.brands img {
+    width: 15%
+}
