@@ -1,0 +1,9 @@
+.inputGroup{
+    background-color: #eeeeee;
+    border-radius: 10px;
+    padding: 20px 0px 10vh 0px;
+}
+.commentDiv-headings{
+    display: flex;
+    justify-content: space-between;
+}

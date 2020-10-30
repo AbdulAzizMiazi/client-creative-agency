@@ -1,0 +1,13 @@
+.inputGroup{
+    background-color: #eeeeee;
+    border-radius: 10px;
+}
+.mainForm-Part{
+    background-color: white;
+    padding: 10px 10px 25vh 10px;
+    border-radius: 10px;
+}
+.addAdminDiv-headings{
+    display: flex;
+    justify-content: space-between;
+}

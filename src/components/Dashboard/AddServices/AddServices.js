@@ -1,45 +1,44 @@
 import React from 'react';
+import './AddServices.css';
 import Form from "react-bootstrap/Form";
 import { Button, Col } from "react-bootstrap";
 import { useState } from 'react';
 
 const AddServices = () => {
-    const [newServiceData, setNewServiceData] = useState({});
+    let [newServiceData, setNewServiceData] = useState({});
     const [file, setFile] = useState(null);
-    console.log(file);
-    console.log(newServiceData);
+    let [success, setSuccess] = useState("");
 
     const updateNewServiceData = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        const updatedServiceData = {...newServiceData};
-        updatedServiceData[name] = value;
-        setNewServiceData(updatedServiceData);
-        // setSuccess(success = "");
+      const name = e.target.name;
+      const value = e.target.value;
+      const updatedServiceData = {...newServiceData};
+      updatedServiceData[name] = value;
+      setNewServiceData(updatedServiceData);
+      setSuccess("");
     }
     const takeFile = e => {
-        const newFile = e.target.files[0];
-        setFile(newFile);
+      const newFile = e.target.files[0];
+      setFile(newFile);
     }
 
-    const handleSubmit = e  => {
-        e.preventDefault();
+    const handleSubmit = () => {
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('image', file);
         formData.append("serviceTitle", newServiceData.serviceTitle);
         formData.append("description", newServiceData.description);
-        console.log(formData);
-        console.log(file);
-        // console.log(newServiceData);
-    
-        fetch("http://localhost:5000/addServices", {
+
+        fetch("https://blooming-headland-33626.herokuapp.com/addServices", {
           method: "POST",
-          headers: {"Content-Type" : "application/json"},
-          body: JSON.stringify(newServiceData),
+          body: formData
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            if (data.insertedCount > 0) {
+              setSuccess("Service added successfully...!!");
+              setNewServiceData({});
+              setFile(null);
+            }
         })
         .catch((error) => {
             console.error(error);
@@ -48,27 +47,26 @@ const AddServices = () => {
     return (
         <div className="ml-3 pt-3">
 
-      <h4 className="mb-4 ml-3 font-weight-bold">Add Event</h4>
+      <h4 className="mb-4 ml-3 font-weight-bold">Add Service</h4>
       {/* <p style={{color:"green"}}>{success}</p> */}
 
       <div className="myTable p-4 px-2 shadow-lg">
-        <Form onSubmit = {handleSubmit} >
+        <Form>
+                <p style={{color:"green", textAlign: "center"}}>
+                    {success}<br/>
+                </p>
           <Form.Row>
             <Col sm={12} md={6}>
             <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Service Title</Form.Label>
                 <Form.Control type="text" name="serviceTitle" onBlur={updateNewServiceData} placeholder="Enter Title" />
-                {/* <small style={{color:"red", float: "left"}}>
-                    {titleWarning}<br/>
-                </small> */}
             </Form.Group>
             </Col>
 
             <Col sm={12} md={6}>
             <Form.Group as={Col} controlId="formGridPassword">
-                <Form.Label>Icon</Form.Label>
                 <br/>
-                <input type="file" name="icon" onChange={takeFile} placeholder="upload image" id=""/>
+                <input type="file" name="icon" onChange={takeFile} placeholder="upload image" className="fileUpload-box" id="fileUpload"/>
             </Form.Group>
             </Col>
           </Form.Row>
@@ -81,8 +79,8 @@ const AddServices = () => {
             </Form.Group>
             </Col>
           </Form.Row>
-        <Button variant="primary" type="submit"> Submit </Button>
         </Form>
+        <Button variant="primary" type="submit" onClick={handleSubmit}> Submit </Button>
 
 
       </div>

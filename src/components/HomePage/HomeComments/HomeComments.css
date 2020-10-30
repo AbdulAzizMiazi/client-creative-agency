@@ -1,0 +1,33 @@
+.commentDiv-heading{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.commentCard{
+    /* height: 280px; */
+    overflow: hidden;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 5px;
+    padding: 18px;
+}
+.commentCard-head{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.commentCard-head img{
+    width: 80px;
+    margin-right: 30px;
+}
+.commentCard-head h4{
+    font-size: 20px;
+    font-weight: 700;
+}
+.commentCard-head h5{
+    font-size: 15px;
+}
+.commentCard p {
+    color: grey;
+    font-size: 14px;
+    margin: 0px;
+}

@@ -10,6 +10,7 @@ import google from '../../../resources/logos/google.png';
 import uber from '../../../resources/logos/uber.png';
 import netflix from '../../../resources/logos/netflix.png';
 import airbnb from '../../../resources/logos/airbnb.png';
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -31,12 +32,17 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link className="mr-3">Home</Nav.Link>
-                        <Nav.Link className="mr-3">Our Portfolio</Nav.Link>
-                        <Nav.Link className="mr-3">Our Team</Nav.Link>
-                        <Nav.Link className="mr-3">Contact Us</Nav.Link>
+                        <Link to="/"><Nav.Link href="#" className="mr-3">Home</Nav.Link></Link>
+                        <Nav.Link className="mr-3">
+                            <Link to="/dashboard" style={{color: "rgba(0,0,0,.5)"}}>Dashboard</Link>
+                        </Nav.Link>
+                        <Nav.Link href="#" className="mr-3">Our Portfolio</Nav.Link>
+                        <Nav.Link href="#" className="mr-3">Our Team</Nav.Link>
+                        <Nav.Link href="#" className="mr-3">Contact Us</Nav.Link>
                     </Nav>
-                    <Button variant="dark" className="px-5 py-2">LogIn</Button>
+                    <Button variant="dark" className="px-5 py-2">
+                        <Link to="/login" style={{color: "white"}}>LogIn</Link>
+                    </Button>
                 </Navbar.Collapse>
             </Navbar>
 
@@ -59,7 +65,7 @@ const Header = () => {
             </header>
         </div>
         </div>
-            <section className="brands container mt-sm-2 pt-sm-2 mt-lg-5 pt-lg-5">
+            <section className="brands container mt-sm-2 pt-sm-2 mt-lg-5 pt-lg-3">
                 {
                     brandsImg.map((eachBrandImg, index) => <img src={eachBrandImg} key={`ebi${index+1}`} alt=""/> )
                 }

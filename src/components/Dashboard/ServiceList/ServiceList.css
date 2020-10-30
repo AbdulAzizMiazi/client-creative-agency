@@ -1,0 +1,54 @@
+.serviceList-div{
+    background-color: #eeeeee;
+    border-radius: 10px;
+    padding: 20px 0px 10vh 20px;
+}
+.serviceList-card{
+    box-shadow: 5px 5px 20px rgb(211, 211, 211);
+    border-radius: 15px;
+    padding: 25px;
+    height: 280px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    background-color: white;
+
+}
+.serviceList-card > p{
+    color: grey;
+    font-size: 18px;
+    font-weight: 300 !important;
+}
+.serviceList-card h4{
+    font-weight: 700;
+    font-size: 20px;
+}
+.card-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+.card-head img{
+    width: 100px;
+    margin-bottom: 20px;
+}
+.myBtn{
+    /* padding: 7px 21px; */
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.pending-btn{
+    background-color: rgba(195, 25, 19, 0.383);
+    color: rgba(255, 0, 0, 0.623);
+}
+.on-going-btn{
+    background-color: rgba(255, 255, 0, 0.383);
+    color: yellow;
+}
+.done-btn{
+    background-color: rgba(0, 128, 0, 0.30);
+    color: rgb(60, 173, 60);
+}
